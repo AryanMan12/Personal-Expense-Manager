@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Center(child: Text("Hello World!")),
+      home: const Scaffold(body: Center(child: Text("Hello World!"))),
     );
   }
 }
