@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expense_manager/screen/home_screen.dart';
+import 'package:personal_expense_manager/util/theme/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +14,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Personal Expense Manager',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      themeMode: ThemeMode.dark,
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Expense Manager"),
+        ),
+        body: HomeScreen(),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "List"),
+            BottomNavigationBarItem(icon: Icon(Icons.dashboard), label:"dashboard"),
+          ],
+        ),
       ),
-      home: const Scaffold(body: Center(child: Text("Hello World!"))),
     );
   }
 }
