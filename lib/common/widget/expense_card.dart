@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ExpenseCard extends StatelessWidget {
-  const ExpenseCard({super.key});
+import '../../data/models/transaction.dart';
+
+class ExpenseCard extends StatefulWidget {
+
+  final Transaction transaction;
+
+  const ExpenseCard({Key? key, required this.transaction}):super(key:key);
 
   @override
+  State<ExpenseCard> createState() => _ExpenseCardState();
+}
+
+class _ExpenseCardState extends State<ExpenseCard> {
+  @override
   Widget build(BuildContext context) {
+    Color amountColor = (widget.transaction.transactionType == TransactionType.Expense ? Colors.red : Colors.green);
     return Container(
       // height: 70,
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -12,14 +23,14 @@ class ExpenseCard extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(width: 2),
           borderRadius: BorderRadius.circular(5)),
-      child: const Column(
+      child: Column(
         children: [
           Row(
             children: [
               Text(
                 "Type",
                 style: TextStyle(
-                    color: Colors.red,
+                    color: amountColor,
                     fontSize: 12,
                     fontWeight: FontWeight.bold),
               ),
@@ -28,19 +39,19 @@ class ExpenseCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Description",
+                widget.transaction.description,
                 style: TextStyle(fontSize: 20),
               ),
               Spacer(),
               Text(
-                "&&",
-                style: TextStyle(color: Colors.red, fontSize: 20),
+                "\$"+widget.transaction.amount.toString(),
+                style: TextStyle(color: amountColor, fontSize: 20),
               )
             ],
           ),
           Row(
             children: [
-              Text("DateTime"),
+              Text(widget.transaction.transactionDateTime.toString()),
             ],
           )
         ],
