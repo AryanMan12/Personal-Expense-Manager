@@ -5,10 +5,10 @@ class Transaction{
   String description;
   int amount;
   PaymentMode paymentMode;
-  TransactionType transactionType;
+  bool isExpense;
   DateTime transactionDateTime = DateTime.now();
 
-  Transaction({ this.description = "", required this.amount, required this.transactionType,required this.paymentMode}){
+  Transaction({ this.description = "", required this.amount, required this.isExpense,required this.paymentMode}){
     this.id = Guid.newGuid;
     this.transactionDateTime = DateTime.now();
   }
@@ -16,4 +16,4 @@ class Transaction{
 
 enum PaymentMode { UPI,Cash,Bank_Transfer,Debit_Card,CreditCard }
 
-enum TransactionType {Expense,Income}
+// enum TransactionType {Expense,Income}
