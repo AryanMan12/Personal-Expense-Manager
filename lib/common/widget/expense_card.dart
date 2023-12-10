@@ -16,6 +16,8 @@ class _ExpenseCardState extends State<ExpenseCard> {
   Widget build(BuildContext context) {
     Color amountColor =
         (widget.transaction.isExpense ? Colors.red : Colors.green);
+    String Currency = "\$";
+
     return Container(
       // height: 70,
       padding: const EdgeInsets.symmetric(
@@ -52,7 +54,7 @@ class _ExpenseCardState extends State<ExpenseCard> {
               ),
               Spacer(),
               Text(
-                "\$" + widget.transaction.amount.toString(),
+                Currency + widget.transaction.amount.toString(),
                 style: TextStyle(
                   color: amountColor,
                   fontSize: 20,

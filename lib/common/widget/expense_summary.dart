@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class ExpenseSummary extends StatefulWidget {
   int totalIncome = 0;
   int totalExpense = 0;
-  ExpenseSummary({Key? key, required this.totalIncome, required this.totalExpense}):super(key:key);
+  ExpenseSummary(
+      {Key? key, required this.totalIncome, required this.totalExpense})
+      : super(key: key);
 
   @override
   State<ExpenseSummary> createState() => _ExpenseSummaryState();
@@ -13,29 +15,78 @@ class _ExpenseSummaryState extends State<ExpenseSummary> {
   @override
   Widget build(BuildContext context) {
     int savings = widget.totalIncome - widget.totalExpense;
+    String Currency = "\$";
 
-    return Container(
-      height: 100,
-      child: Column(
-        children: [
-          Text("Overall Savings: "+savings.toString(),style: TextStyle(
-            color: savings < 0? Colors.red: Colors.green,
-            fontSize: 20,
-          )),
-          Row(
+    return Column(
+      children: [
+        Expanded(
+          flex:1,
+          child: Text(
+            "Total Balance",
+            style: TextStyle(
+              fontSize: 15,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Text(
+            Currency + savings.toString(),
+            style: TextStyle(
+              color: savings < 0 ? Colors.red : Colors.green,
+              fontSize: 30,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Income: "+widget.totalIncome.toString(),style: TextStyle(
-                color: Colors.green,
-                fontSize: 20,
-              ),),
-              Text("Expense: "+widget.totalExpense.toString(),style: TextStyle(
-    color: Colors.red,
-    fontSize: 20,
-    ),)
+              Column(
+                children: [
+                  Expanded(
+                    flex:1,
+                    child: Text(
+                      "Income ",
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex:2,
+                    child: Text(
+                      Currency + widget.totalIncome.toString(),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Expanded(
+                    flex:1,
+                    child: Text(
+                      "Expense ",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex:2,
+                    child: Text(
+                      Currency + widget.totalExpense.toString(),
+                    ),
+                  ),
+                ],
+              ),
             ],
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

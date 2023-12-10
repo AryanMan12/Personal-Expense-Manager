@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Personal Expense Manager',
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: Themes.lightTheme,
       darkTheme: Themes.darkTheme,
       home: Scaffold(
@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
             BottomNavigationBarItem(icon: Icon(Icons.dashboard), label:"dashboard"),
           ],
         ),
+        floatingActionButton: FloatingActionButton(child: Text("+"),onPressed: ()=>{},),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }
