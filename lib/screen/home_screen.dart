@@ -3,6 +3,8 @@ import 'package:personal_expense_manager/common/widget/expense_card.dart';
 import 'package:personal_expense_manager/common/widget/expense_summary.dart';
 import 'package:personal_expense_manager/data/models/transaction.dart';
 
+import '../data/enums/payment_mode.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
