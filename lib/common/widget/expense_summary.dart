@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ExpenseSummary extends StatefulWidget {
-  int totalIncome = 0;
-  int totalExpense = 0;
+  double totalIncome = 0;
+  double totalExpense = 0;
   ExpenseSummary(
       {Key? key, required this.totalIncome, required this.totalExpense})
       : super(key: key);
@@ -14,7 +14,7 @@ class ExpenseSummary extends StatefulWidget {
 class _ExpenseSummaryState extends State<ExpenseSummary> {
   @override
   Widget build(BuildContext context) {
-    int savings = widget.totalIncome - widget.totalExpense;
+    double savings = widget.totalIncome - widget.totalExpense;
     String Currency = "\$";
 
     return Column(
