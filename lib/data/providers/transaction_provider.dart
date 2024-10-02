@@ -45,7 +45,8 @@ class TransactionProvider extends BaseProvider {
 
   Future<List<transaction.Transaction>> FetchAllOrderedByDateTimeDesc() async {
     Database db = await DatabaseService.instance.getDatabase();
-    return (await db.query(tableName,orderBy: '$transactionDateTimeColumn DESC'))
+    return (await db.query(tableName,
+            orderBy: '$transactionDateTimeColumn DESC'))
         .toList()
         .map((element) => transaction.Transaction.fromMap(element))
         .toList();

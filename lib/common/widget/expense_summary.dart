@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ExpenseSummary extends StatefulWidget {
+class ExpenseSummary extends StatelessWidget {
   double totalIncome = 0;
   double totalExpense = 0;
   ExpenseSummary(
-      {Key? key, required this.totalIncome, required this.totalExpense})
-      : super(key: key);
+      {super.key, required this.totalIncome, required this.totalExpense});
 
-  @override
-  State<ExpenseSummary> createState() => _ExpenseSummaryState();
-}
-
-class _ExpenseSummaryState extends State<ExpenseSummary> {
   @override
   Widget build(BuildContext context) {
-    double savings = widget.totalIncome - widget.totalExpense;
-    String Currency = "\$";
+    double savings = totalIncome - totalExpense;
+    String currency = "₹";
 
     return Column(
       children: [
-        Expanded(
-          flex:1,
+        const Expanded(
+          flex: 1,
           child: Text(
             "Total Balance",
             style: TextStyle(
@@ -31,7 +25,7 @@ class _ExpenseSummaryState extends State<ExpenseSummary> {
         Expanded(
           flex: 2,
           child: Text(
-            Currency + savings.toString(),
+            currency + savings.toString(),
             style: TextStyle(
               color: savings < 0 ? Colors.red : Colors.green,
               fontSize: 30,
@@ -45,8 +39,8 @@ class _ExpenseSummaryState extends State<ExpenseSummary> {
             children: [
               Column(
                 children: [
-                  Expanded(
-                    flex:1,
+                  const Expanded(
+                    flex: 1,
                     child: Text(
                       "Income ",
                       style: TextStyle(
@@ -56,17 +50,17 @@ class _ExpenseSummaryState extends State<ExpenseSummary> {
                     ),
                   ),
                   Expanded(
-                    flex:2,
+                    flex: 2,
                     child: Text(
-                      Currency + widget.totalIncome.toString(),
+                      currency + totalIncome.toString(),
                     ),
                   ),
                 ],
               ),
               Column(
                 children: [
-                  Expanded(
-                    flex:1,
+                  const Expanded(
+                    flex: 1,
                     child: Text(
                       "Expense ",
                       style: TextStyle(
@@ -76,9 +70,9 @@ class _ExpenseSummaryState extends State<ExpenseSummary> {
                     ),
                   ),
                   Expanded(
-                    flex:2,
+                    flex: 2,
                     child: Text(
-                      Currency + widget.totalExpense.toString(),
+                      currency + totalExpense.toString(),
                     ),
                   ),
                 ],

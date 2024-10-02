@@ -33,7 +33,7 @@ class CounterPartyProvider extends BaseProvider {
     await db.insert(tableName, obj.toMap());
   }
 
-  Future<CounterParty> GetCounterPartyById(Guid id) async {
+  Future<CounterParty> getCounterPartyById(Guid id) async {
     Database db = await DatabaseService.instance.getDatabase();
 
     return CounterParty.fromMap(

@@ -1,7 +1,6 @@
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:personal_expense_manager/data/models/base_table.dart';
-
-import '../enums/counter_party_type.dart';
+import 'package:personal_expense_manager/data/enums/counter_party_type.dart';
 
 class CounterParty extends BaseTable {
   String name;
@@ -9,12 +8,12 @@ class CounterParty extends BaseTable {
   String description;
   double balance;
 
-  CounterParty(
-      {this.description = "",
-      required this.balance,
-      required this.partyType,
-      required this.name})
-      : super();
+  CounterParty({
+    this.description = "",
+    required this.balance,
+    required this.partyType,
+    required this.name,
+  }) : super();
 
   factory CounterParty.fromMap(Map<String, Object?> map) {
     CounterParty party = CounterParty(
@@ -23,20 +22,23 @@ class CounterParty extends BaseTable {
       name: map['name'] as String,
     );
     party.id = Guid(map['id'] as String);
-    party.createdDate = DateTime.fromMillisecondsSinceEpoch(map['createdDate'] as int);
-    party.modifiedDate = DateTime.fromMillisecondsSinceEpoch(map['modifiedDate'] as int);
+    party.createdDate =
+        DateTime.fromMillisecondsSinceEpoch(map['createdDate'] as int);
+    party.modifiedDate =
+        DateTime.fromMillisecondsSinceEpoch(map['modifiedDate'] as int);
     return party;
   }
 
+  @override
   Map<String, Object> toMap() {
     return {
-      'id': this.id,
-      'name': this.name,
-      'description': this.description,
-      'balance': this.balance,
-      'partyType': this.partyType,
-      'createdDate': this.createdDate.millisecondsSinceEpoch,
-      'modifiedDate': this.modifiedDate.millisecondsSinceEpoch
+      'id': id,
+      'name': name,
+      'description': description,
+      'balance': balance,
+      'partyType': partyType,
+      'createdDate': createdDate.millisecondsSinceEpoch,
+      'modifiedDate': modifiedDate.millisecondsSinceEpoch
     };
   }
 }

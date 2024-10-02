@@ -19,16 +19,20 @@ class MyApp extends StatelessWidget {
       darkTheme: Themes.darkTheme,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Expense Manager"),
+          title: const Text("Expense Manager"),
         ),
-        body: HomeScreen(),
+        body: const HomeScreen(),
         bottomNavigationBar: BottomNavigationBar(
-          items: [
+          items: const [
             BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "List"),
-            BottomNavigationBarItem(icon: Icon(Icons.dashboard), label:"dashboard"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard), label: "Dashboard"),
           ],
         ),
-        floatingActionButton: FloatingActionButton(child: Text("+"),onPressed: ()=>{},),
+        floatingActionButton: FloatingActionButton(
+          child: const Text("+"),
+          onPressed: () => {},
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );

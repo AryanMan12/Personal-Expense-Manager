@@ -5,7 +5,7 @@ import '../../data/models/transaction.dart';
 class ExpenseCard extends StatefulWidget {
   final Transaction transaction;
 
-  const ExpenseCard({Key? key, required this.transaction}) : super(key: key);
+  const ExpenseCard({super.key, required this.transaction});
 
   @override
   State<ExpenseCard> createState() => _ExpenseCardState();
@@ -16,7 +16,7 @@ class _ExpenseCardState extends State<ExpenseCard> {
   Widget build(BuildContext context) {
     Color amountColor =
         (widget.transaction.isExpense ? Colors.red : Colors.green);
-    String Currency = "\$";
+    String currency = "₹";
 
     return Container(
       // height: 70,
@@ -50,11 +50,11 @@ class _ExpenseCardState extends State<ExpenseCard> {
             children: [
               Text(
                 widget.transaction.description,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
-                Currency + widget.transaction.amount.toString(),
+                currency + widget.transaction.amount.toString(),
                 style: TextStyle(
                   color: amountColor,
                   fontSize: 20,

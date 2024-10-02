@@ -12,5 +12,4 @@ abstract class BaseTable {
   }
 
   Map<String, Object> toMap();
-
 }

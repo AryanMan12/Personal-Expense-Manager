@@ -11,17 +11,17 @@ class DatabaseService {
   Future<Database> getDatabase() async {
     final databaseDirectory = await getDatabasesPath();
     final databasePath = join(databaseDirectory, "masterDB.db");
-    final TransactionProvider transactionProvider = new TransactionProvider();
-    final CounterPartyProvider counterPartyProvider = new CounterPartyProvider();
+    final TransactionProvider transactionProvider = TransactionProvider();
+    final CounterPartyProvider counterPartyProvider = CounterPartyProvider();
     final database = openDatabase(
       databasePath,
       version: 1,
-      onCreate: (_db, version) {
+      onCreate: (db, version) {
         switch (version) {
           case 1:
             // Creating tables
-            transactionProvider.createTable(_db);
-            counterPartyProvider.createTable(_db);
+            transactionProvider.createTable(db);
+            counterPartyProvider.createTable(db);
         }
       },
     );
