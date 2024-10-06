@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ExpenseSummary extends StatelessWidget {
-  double totalIncome = 0;
-  double totalExpense = 0;
-  ExpenseSummary(
+  final double totalIncome;
+  final double totalExpense;
+  const ExpenseSummary(
       {super.key, required this.totalIncome, required this.totalExpense});
 
   @override

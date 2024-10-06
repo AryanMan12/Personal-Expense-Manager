@@ -15,6 +15,7 @@ class TransactionProvider extends BaseProvider {
   String isExpenseColumn = "isExpense";
   String transactionDateTimeColumn = "transactionDateTime";
 
+  @override
   void createTable(Database db) {
     db.execute('''
       CREATE TABLE $tableName (
@@ -43,7 +44,7 @@ class TransactionProvider extends BaseProvider {
     );
   }
 
-  Future<List<transaction.Transaction>> FetchAllOrderedByDateTimeDesc() async {
+  Future<List<transaction.Transaction>> fetchAllOrderedByDateTimeDesc() async {
     Database db = await DatabaseService.instance.getDatabase();
     return (await db.query(tableName,
             orderBy: '$transactionDateTimeColumn DESC'))

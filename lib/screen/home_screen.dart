@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expense_manager/common/widget/expense_card.dart';
 import 'package:personal_expense_manager/common/widget/expense_summary.dart';
-import 'package:personal_expense_manager/data/models/transaction.dart'
-    as transaction;
+import 'package:personal_expense_manager/data/models/transaction.dart';
 import 'package:personal_expense_manager/data/providers/transaction_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,12 +10,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TransactionProvider transactionProvider = TransactionProvider();
-    String currency = "₹";
+    // String currency = "₹";
 
-    return FutureBuilder<List<transaction.Transaction>>(
-        future: transactionProvider.FetchAllOrderedByDateTimeDesc(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<transaction.Transaction>> snapshot) {
+    return FutureBuilder<List<Transaction>>(
+        future: transactionProvider.fetchAllOrderedByDateTimeDesc(),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<Transaction>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show a loading indicator while waiting for data
             return const Center(child: CircularProgressIndicator());
@@ -24,10 +23,10 @@ class HomeScreen extends StatelessWidget {
             // Handle any errors that occur during the fetch
             return Center(child: Text('Error: ${snapshot.error}'));
           }
-          List<transaction.Transaction> transactions = snapshot.data!;
+          List<Transaction> transactions = snapshot.data!;
           double totalIncome = 0;
           double totalExpense = 0;
-          for (transaction.Transaction trans in transactions) {
+          for (Transaction trans in transactions) {
             if (trans.isExpense) {
               totalExpense += trans.amount;
             } else {
