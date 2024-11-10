@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expense_manager/data/services/injection_container.dart';
 import 'package:personal_expense_manager/screen/home_screen.dart';
 import 'package:personal_expense_manager/util/theme/themes.dart';
 
-void main() {
+Future<void> main() async {
+  await InitializeDependencyInjection();
   runApp(const MyApp());
 }
 

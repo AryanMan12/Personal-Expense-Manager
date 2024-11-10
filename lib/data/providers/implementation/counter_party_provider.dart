@@ -1,12 +1,12 @@
 import 'package:flutter_guid/flutter_guid.dart';
-import 'package:personal_expense_manager/data/providers/base_provider.dart';
+import 'package:personal_expense_manager/data/providers/implementation/base_provider.dart';
+import 'package:personal_expense_manager/data/providers/interface/icounter_party_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../models/counter_party.dart';
-import '../services/database_service.dart';
+import 'package:personal_expense_manager/data/models/counter_party.dart';
+import 'package:personal_expense_manager/data/services/database_service.dart';
 
-class CounterPartyProvider extends BaseProvider {
-  @override
+class CounterPartyProvider extends BaseProvider implements ICounterPartyProvider {
   String tableName = "CounterParty";
   String nameColumn = "name";
   String descriptionColumn = "description";
@@ -28,12 +28,12 @@ class CounterPartyProvider extends BaseProvider {
     ''');
   }
 
-  Future addCounterParty(CounterParty obj) async {
+  Future insert(CounterParty obj) async {
     Database db = await DatabaseService.instance.getDatabase();
     await db.insert(tableName, obj.toMap());
   }
 
-  Future<CounterParty> getCounterPartyById(Guid id) async {
+  Future<CounterParty> get(Guid id) async {
     Database db = await DatabaseService.instance.getDatabase();
 
     return CounterParty.fromMap(

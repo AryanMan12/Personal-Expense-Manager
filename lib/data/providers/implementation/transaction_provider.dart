@@ -1,11 +1,12 @@
 import 'dart:core';
-import 'package:personal_expense_manager/data/providers/base_provider.dart';
+import 'package:personal_expense_manager/data/providers/implementation/base_provider.dart';
+import 'package:personal_expense_manager/data/providers/interface/itransaction_provider.dart';
 import 'package:personal_expense_manager/data/services/database_service.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:personal_expense_manager/data/models/transaction.dart'
     as transaction;
 
-class TransactionProvider extends BaseProvider {
+class TransactionProvider extends BaseProvider implements ITransactionProvider{
   @override
   String tableName = "transactions";
   String senderIdColumn = "senderId";

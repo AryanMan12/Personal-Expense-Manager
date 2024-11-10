@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:personal_expense_manager/common/widget/expense_card.dart';
 import 'package:personal_expense_manager/common/widget/expense_summary.dart';
 import 'package:personal_expense_manager/data/models/transaction.dart';
-import 'package:personal_expense_manager/data/providers/transaction_provider.dart';
+import 'package:personal_expense_manager/data/services/injection_container.dart';
+import 'package:personal_expense_manager/data/providers/interface/itransaction_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TransactionProvider transactionProvider = TransactionProvider();
+    ITransactionProvider transactionProvider = locator<ITransactionProvider>();
     // String currency = "₹";
 
     return FutureBuilder<List<Transaction>>(
