@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../data/models/transaction.dart';
 
 class ExpenseCard extends StatefulWidget {
-  final Transaction transaction;
+  final TransactionModel transaction;
 
   const ExpenseCard({super.key, required this.transaction});
 

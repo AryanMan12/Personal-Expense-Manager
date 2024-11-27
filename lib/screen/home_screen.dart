@@ -4,20 +4,21 @@ import 'package:personal_expense_manager/common/widget/expense_card.dart';
 import 'package:personal_expense_manager/common/widget/expense_summary.dart';
 import 'package:personal_expense_manager/data/models/transaction.dart';
 import 'package:personal_expense_manager/data/services/injection_container.dart';
-import 'package:personal_expense_manager/data/providers/interface/itransaction_provider.dart';
+import 'package:personal_expense_manager/data/services/database/database_manager_interfaces/itransactions_db_manager.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ITransactionProvider transactionProvider = locator<ITransactionProvider>();
+    ITransactionsDbManager transactionProvider =
+        locator<ITransactionsDbManager>();
     // String currency = "₹";
 
-    return FutureBuilder<List<Transaction>>(
+    return FutureBuilder<List<TransactionModel>>(
         future: transactionProvider.fetchAllOrderedByDateTimeDesc(),
-        builder:
-            (BuildContext context, AsyncSnapshot<List<Transaction>> snapshot) {
+        builder: (BuildContext context,
+            AsyncSnapshot<List<TransactionModel>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show a loading indicator while waiting for data
             return const Center(child: CircularProgressIndicator());
@@ -25,10 +26,10 @@ class HomeScreen extends StatelessWidget {
             // Handle any errors that occur during the fetch
             return Center(child: Text('Error: ${snapshot.error}'));
           }
-          List<Transaction> transactions = snapshot.data!;
+          List<TransactionModel> transactions = snapshot.data!;
           double totalIncome = 0;
           double totalExpense = 0;
-          for (Transaction trans in transactions) {
+          for (TransactionModel trans in transactions) {
             if (trans.isExpense) {
               totalExpense += trans.amount;
             } else {

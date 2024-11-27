@@ -4,7 +4,7 @@ import 'package:personal_expense_manager/screen/home_screen.dart';
 import 'package:personal_expense_manager/util/theme/themes.dart';
 
 Future<void> main() async {
-  await InitializeDependencyInjection();
+  await initializeDependencyInjection();
   runApp(const MyApp());
 }
 
@@ -26,9 +26,14 @@ class MyApp extends StatelessWidget {
         body: const HomeScreen(),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "List"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard), label: "Dashboard"),
+              icon: Icon(Icons.list_alt),
+              label: "List",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard),
+              label: "Dashboard",
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(

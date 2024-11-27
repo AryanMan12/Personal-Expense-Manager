@@ -1,7 +1,7 @@
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:personal_expense_manager/data/models/base_table.dart';
 
-class Transaction extends BaseTable {
+class TransactionModel extends BaseTable {
   // model attributes
   Guid senderId;
   Guid receiverId;
@@ -10,7 +10,7 @@ class Transaction extends BaseTable {
   bool isExpense;
   DateTime transactionDateTime = DateTime.now();
 
-  Transaction({
+  TransactionModel({
     this.description = "",
     required this.senderId,
     required this.receiverId,
@@ -19,8 +19,8 @@ class Transaction extends BaseTable {
   }) : super();
 
   // Convert a Map to a Transaction object
-  factory Transaction.fromMap(Map<String, Object?> map) {
-    Transaction transaction = Transaction(
+  factory TransactionModel.fromMap(Map<String, Object?> map) {
+    TransactionModel transaction = TransactionModel(
       description: map['description'] as String,
       senderId: Guid(map['senderId'] as String),
       receiverId: Guid(map['receiverId'] as String),

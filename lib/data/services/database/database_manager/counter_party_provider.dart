@@ -1,17 +1,18 @@
 import 'package:flutter_guid/flutter_guid.dart';
-import 'package:personal_expense_manager/data/providers/implementation/base_provider.dart';
-import 'package:personal_expense_manager/data/providers/interface/icounter_party_provider.dart';
+import 'package:personal_expense_manager/data/services/database/database_manager/base_db_columns.dart';
+import 'package:personal_expense_manager/data/services/database/database_manager_interfaces/icounter_party_db_manager.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'package:personal_expense_manager/data/models/counter_party.dart';
-import 'package:personal_expense_manager/data/services/database_service.dart';
+import 'package:personal_expense_manager/data/services/database/database_service.dart';
 
-class CounterPartyProvider extends BaseProvider implements ICounterPartyProvider {
-  String tableName = "CounterParty";
+class CounterPartyDbManager extends BaseDbColumns
+    implements ICounterPartyDbManager {
+  String tableName = "counter_party";
   String nameColumn = "name";
   String descriptionColumn = "description";
   String balanceColumn = "balance";
-  String partyTypeColumn = "partyType";
+  String partyTypeColumn = "party_type";
 
   @override
   void createTable(Database db) {
